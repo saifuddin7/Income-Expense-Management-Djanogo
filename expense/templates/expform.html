@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+{%block data%}
+<h2 style="color: crimson;">{{msg}}</h2>
+<h1>Expenses Details</h1>
+<form action="" method='POST'>
+    {%csrf_token%}
+    <table border="3" cellspacing="2">
+        {{ef.as_table}}
+        <tr>
+            <td><input type="submit"></td>
+        </tr>
+    </table>
+
+</form>
+{%endblock%}

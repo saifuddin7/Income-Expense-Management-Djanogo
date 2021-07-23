@@ -1,0 +1,64 @@
+{%extends 'base.html'%}
+{%block data%}
+<form method="POST">
+    {%csrf_token%}
+    <textarea cols="50" rows="2" name="search" placeholder="Saerch by Description"></textarea>
+    <button type="submit">Search</button>
+</form>
+<form>
+    <table border="2" cellspacing="5" style="border-color: aqua;">
+        <tr>
+            <th>Income</th>
+            <th>Income Type</th>
+            <th>Income Date</th>
+            <th>Description</th>
+            <th>User Name</th> 
+            <th colspan="2">Action</th>
+        </tr>
+        {%for i in incl%}
+        <tr>
+            <td>{{i.income}}</td>
+            <td>{{i.incomeType}}</td>
+            <td>{{i.incomeDate}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.user}}</td>
+            <td><a href="dinc?id={{i.id}}" type="submit">Delete</a></td>
+            <td><a href="einc?id={{i.id}}" type="submit">Edit</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</form>
+
+
+<style>
+    #left-section{
+        width: 200px;
+        height: 100%;
+        background-color: darkolivegreen;
+        padding: 20px;
+        position: fixed;
+        right: 0%;
+        top: 0%;
+    }
+</style>
+<div id="left-section">
+    <h2>All Incomes</h2>
+    <ul>
+        <li><a href="{%url 'incomes:all_income'%}"><h4>All Income</h4></a></li>
+    </ul>
+    <h2>By Income</h2>
+    <ol>
+        {%for i in inc%}
+        <li><a href="{%url 'incomes:sr_income' i %}"><h4>{{i}}</h4></a></li>
+        {%endfor%}
+    </ol>
+    <h2>By Type</h2>
+    <ol>
+        {%for i in inctype%}
+        <li><a href="{%url 'incomes:sr_incometype' i %}"><h4>{{i}}</h4></a></li>
+        {%endfor%}
+    </ol>
+   
+    
+</div>
+{%endblock%}

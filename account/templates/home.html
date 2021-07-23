@@ -1,0 +1,8 @@
+{%extends 'base.html'%}
+{%block data%}
+<h1>Income Expense Managment</h1>
+{%if user.is_authenticated%}
+<h1>Welcome &nbsp;<span style="color:darkslategrey;">{{user.first_name|upper}}&nbsp;{{user.last_name|upper}}</span></h1>
+<h2>Your Balance: <span>{{bal}}</span></h2>
+{%endif%}
+{%endblock%}

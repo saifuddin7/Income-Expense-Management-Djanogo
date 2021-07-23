@@ -1,0 +1,56 @@
+    <style>
+        body{
+            background-color: lightblue;
+        }
+        #sidnav{
+            height: 100%;
+            width: 200px;
+            background-color: darkcyan;
+            position: fixed;
+            left: 0%;
+            top: 0%;
+        }
+        #sidnav a{
+            color: gainsboro;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+            text-decoration: none;
+        }
+        #sidnav a:hover{
+            color: midnightblue;
+        }
+        #main{
+            padding-left: 400px;
+            font-style: oblique;
+            color: navy;
+            font-size: 20px;
+        }
+    </style>
+
+
+    <div id="main">
+        {%block data%}
+
+        {%endblock%}
+    </div>
+
+   
+    <div id="sidnav">
+        <h2><a href="/">Home</a></h2>
+        {% if user.is_authenticated %}
+        <h2><a href="{%url 'accounts:editprof'%}">Edit Profile</a></h2>
+        <h2><a href="{%url 'expenses:exp'%}">Add Expense</a></h2>
+        <h2><a href="{%url 'incomes:inc'%}">Add Income</a></h2>
+        <h2><a href="{%url 'incomes:inclist'%}">Income List</a></h2>
+        <h2><a href="{%url 'expenses:explist'%}">Expense List</a></h2>
+        <h2><a href="{%url 'accounts:logout'%}">Logout</a></h2>
+
+
+        {%else%}
+        <h2><a href="{%url 'accounts:reg'%}">Register</a></h2>
+        <h2><a href="{%url 'accounts:login'%}">Login</a></h2>
+        {%endif%}
+
+    </div>
+
+   
